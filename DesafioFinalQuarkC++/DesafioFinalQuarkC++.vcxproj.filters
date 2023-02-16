@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="App">
+      <UniqueIdentifier>{17727521-c0f2-4487-b85b-b41ae85784dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain">
+      <UniqueIdentifier>{18e05741-36aa-4709-a234-535691b043d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter">
+      <UniqueIdentifier>{41d42a78-c718-4fc5-b892-9500557bf533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{15b07104-f4c9-4f54-a689-bd51432c698d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View\IView">
+      <UniqueIdentifier>{e09d6ae2-5607-458b-8441-363b386e33ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View\View Class">
+      <UniqueIdentifier>{e48b3deb-381c-4b8f-a146-9ba7f844e615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Presenter Class">
+      <UniqueIdentifier>{c9ba6688-6de6-45a1-9fe2-ca3e9cff289b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Seller">
+      <UniqueIdentifier>{ee3e28a6-d052-4ff4-a255-d82812ee4d7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Quote">
+      <UniqueIdentifier>{d8c61deb-0f74-48a6-b5d6-e1dc39ae3b48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\SalesChannel">
+      <UniqueIdentifier>{79a090b5-05d6-434d-86c8-83b97c030ba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes">
+      <UniqueIdentifier>{618264c3-f02f-4e77-8a2b-84fab41eac43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Factory">
+      <UniqueIdentifier>{08fa43cd-11ef-415d-9c8d-cf560c089028}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Quality">
+      <UniqueIdentifier>{9c09c5e1-3b5a-46c1-9395-9253904b4f5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Quality\Types">
+      <UniqueIdentifier>{a34396dc-ab04-4236-be71-ffe07c3a1221}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Quality\Types\Standard">
+      <UniqueIdentifier>{3f4a784a-11bb-4ea8-8eb6-7dde3afdabb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Quality\Types\Premium">
+      <UniqueIdentifier>{817c6059-34a9-4098-8e24-57ad54d0fb5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Quality\Factory">
+      <UniqueIdentifier>{66d65a45-c746-4cd0-81e3-0785a0a59560}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types">
+      <UniqueIdentifier>{0fae7203-b326-4789-9eb1-f22f397f5bbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Pants">
+      <UniqueIdentifier>{5c951ed0-40aa-48b6-8c03-50df21709f17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Shirt">
+      <UniqueIdentifier>{9b88ca35-3b85-4296-bc62-137eb71aad2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Shirt\Sleeve">
+      <UniqueIdentifier>{64560215-3f8b-4908-a53c-5893eefd51be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Shirt\Sleeve\Factory">
+      <UniqueIdentifier>{ec6787c1-b264-4cf0-98bc-87ce9de2a2d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Shirt\Sleeve\Types">
+      <UniqueIdentifier>{ce12809c-6004-4a10-9d0c-fa86cada0bbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Shirt\Sleeve\Types\Short">
+      <UniqueIdentifier>{2721a97b-8e5b-435a-865d-6f6f7e403ad4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Shirt\Sleeve\Types\Long">
+      <UniqueIdentifier>{78f98769-f83f-4dc7-aa1c-52362cac1435}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Shirt\Neck">
+      <UniqueIdentifier>{da11efb0-16c5-43b5-bceb-b25f4d62a081}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Shirt\Neck\Factory">
+      <UniqueIdentifier>{6e3f8f6c-4d50-408b-8bc3-16a08452c060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Shirt\Neck\Types">
+      <UniqueIdentifier>{1f3ddc26-1759-4213-bc80-03c445fcd1ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Shirt\Neck\Types\Mao">
+      <UniqueIdentifier>{47838f5a-ea72-450b-bf6b-b7a3977e83ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Shirt\Neck\Types\Common">
+      <UniqueIdentifier>{bf651e9a-c310-4ee6-bf3f-064ab5f55f23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Pants\PantsType">
+      <UniqueIdentifier>{3cdd2743-b51f-4bbf-88af-0e18a10bd58e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Pants\PantsType\Factory">
+      <UniqueIdentifier>{aff522c7-f8b6-4fae-b1ca-fd99064c9ac1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Pants\PantsType\Types">
+      <UniqueIdentifier>{71ec2bef-10bd-4691-ac2c-bdd4df0a2766}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Pants\PantsType\Types\Common">
+      <UniqueIdentifier>{d6699dc2-1df0-437c-b240-49de2646a398}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Domain\Clothes\Types\Pants\PantsType\Types\Chupin">
+      <UniqueIdentifier>{c13cde7b-041d-477c-8e51-fe038255e843}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Seller.cpp">
+      <Filter>Domain\Seller</Filter>
+    </ClCompile>
+    <ClCompile Include="Quality.cpp">
+      <Filter>Domain\Clothes\Quality</Filter>
+    </ClCompile>
+    <ClCompile Include="StandardQuality.cpp">
+      <Filter>Domain\Clothes\Quality\Types\Standard</Filter>
+    </ClCompile>
+    <ClCompile Include="PremiumQuality.cpp">
+      <Filter>Domain\Clothes\Quality\Types\Premium</Filter>
+    </ClCompile>
+    <ClCompile Include="QualityFactory.cpp">
+      <Filter>Domain\Clothes\Quality\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="ChupinPants.cpp">
+      <Filter>Domain\Clothes\Types\Pants\PantsType\Types\Chupin</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonPants.cpp">
+      <Filter>Domain\Clothes\Types\Pants\PantsType\Types\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Shirt.cpp">
+      <Filter>Domain\Clothes\Types\Shirt</Filter>
+    </ClCompile>
+    <ClCompile Include="Neck.cpp">
+      <Filter>Domain\Clothes\Types\Shirt\Neck</Filter>
+    </ClCompile>
+    <ClCompile Include="NeckFactory.cpp">
+      <Filter>Domain\Clothes\Types\Shirt\Neck\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="MaoNeck.cpp">
+      <Filter>Domain\Clothes\Types\Shirt\Neck\Types\Mao</Filter>
+    </ClCompile>
+    <ClCompile Include="SleeveFactory.cpp">
+      <Filter>Domain\Clothes\Types\Shirt\Sleeve\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Sleeve.cpp">
+      <Filter>Domain\Clothes\Types\Shirt\Sleeve</Filter>
+    </ClCompile>
+    <ClCompile Include="LongSleeve.cpp">
+      <Filter>Domain\Clothes\Types\Shirt\Sleeve\Types\Long</Filter>
+    </ClCompile>
+    <ClCompile Include="ShortSleeve.cpp">
+      <Filter>Domain\Clothes\Types\Shirt\Sleeve\Types\Short</Filter>
+    </ClCompile>
+    <ClCompile Include="SalesChannel.cpp">
+      <Filter>Domain\SalesChannel</Filter>
+    </ClCompile>
+    <ClCompile Include="Quote.cpp">
+      <Filter>Domain\Quote</Filter>
+    </ClCompile>
+    <ClCompile Include="Clothes.cpp">
+      <Filter>Domain\Clothes</Filter>
+    </ClCompile>
+    <ClCompile Include="ClothesFactory.cpp">
+      <Filter>Domain\Clothes\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Presenter.cpp">
+      <Filter>Presenter\Presenter Class</Filter>
+    </ClCompile>
+    <ClCompile Include="View.cpp">
+      <Filter>View\View Class</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonNeck.cpp">
+      <Filter>Domain\Clothes\Types\Shirt\Neck\Types\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="PantsTypeFactory.cpp">
+      <Filter>Domain\Clothes\Types\Pants\PantsType\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="PantsType.cpp">
+      <Filter>Domain\Clothes\Types\Pants\PantsType</Filter>
+    </ClCompile>
+    <ClCompile Include="Pants.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Seller.h">
+      <Filter>Domain\Seller</Filter>
+    </ClInclude>
+    <ClInclude Include="Quality.h">
+      <Filter>Domain\Clothes\Quality</Filter>
+    </ClInclude>
+    <ClInclude Include="StandardQuality.h">
+      <Filter>Domain\Clothes\Quality\Types\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="PremiumQuality.h">
+      <Filter>Domain\Clothes\Quality\Types\Premium</Filter>
+    </ClInclude>
+    <ClInclude Include="QualityFactory.h">
+      <Filter>Domain\Clothes\Quality\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="ChupinPants.h">
+      <Filter>Domain\Clothes\Types\Pants\PantsType\Types\Chupin</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonPants.h">
+      <Filter>Domain\Clothes\Types\Pants\PantsType\Types\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Shirt.h">
+      <Filter>Domain\Clothes\Types\Shirt</Filter>
+    </ClInclude>
+    <ClInclude Include="Neck.h">
+      <Filter>Domain\Clothes\Types\Shirt\Neck</Filter>
+    </ClInclude>
+    <ClInclude Include="NeckFactory.h">
+      <Filter>Domain\Clothes\Types\Shirt\Neck\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="MaoNeck.h">
+      <Filter>Domain\Clothes\Types\Shirt\Neck\Types\Mao</Filter>
+    </ClInclude>
+    <ClInclude Include="SleeveFactory.h">
+      <Filter>Domain\Clothes\Types\Shirt\Sleeve\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Sleeve.h">
+      <Filter>Domain\Clothes\Types\Shirt\Sleeve</Filter>
+    </ClInclude>
+    <ClInclude Include="LongSleeve.h">
+      <Filter>Domain\Clothes\Types\Shirt\Sleeve\Types\Long</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortSleeve.h">
+      <Filter>Domain\Clothes\Types\Shirt\Sleeve\Types\Short</Filter>
+    </ClInclude>
+    <ClInclude Include="SalesChannel.h">
+      <Filter>Domain\SalesChannel</Filter>
+    </ClInclude>
+    <ClInclude Include="Quote.h">
+      <Filter>Domain\Quote</Filter>
+    </ClInclude>
+    <ClInclude Include="Clothes.h">
+      <Filter>Domain\Clothes</Filter>
+    </ClInclude>
+    <ClInclude Include="ClothesFactory.h">
+      <Filter>Domain\Clothes\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Presenter.h">
+      <Filter>Presenter\Presenter Class</Filter>
+    </ClInclude>
+    <ClInclude Include="View.h">
+      <Filter>View\View Class</Filter>
+    </ClInclude>
+    <ClInclude Include="IView.h">
+      <Filter>View\IView</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonNeck.h">
+      <Filter>Domain\Clothes\Types\Shirt\Neck\Types\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="PantsTypeFactory.h">
+      <Filter>Domain\Clothes\Types\Pants\PantsType\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="PantsType.h">
+      <Filter>Domain\Clothes\Types\Pants\PantsType</Filter>
+    </ClInclude>
+    <ClInclude Include="Pants.h" />
+  </ItemGroup>
+</Project>
