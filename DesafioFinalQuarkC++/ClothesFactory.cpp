@@ -37,28 +37,29 @@ std::map<ClothesType, Clothes*> ClothesFactory::getClothesList()
 	auto premiumQuality = Quality::selectQuality(2);
 
 	// INIT COMMON PANTS
-	auto commonStandardPants = new Pants(commonPantType, standardQuality);
-	auto commonPremiumPants = new Pants(commonPantType, premiumQuality);
+	auto commonStandardPants = new Pants(250, standardQuality, commonPantType);
+	auto commonPremiumPants = new Pants(250, premiumQuality, commonPantType);
 
 	// INIT CHUPIN PANTS
-	auto chupinStandardPants = new Pants(chupinPantType, standardQuality);
-	auto chupinPremiumPants = new Pants(chupinPantType, premiumQuality);
+	auto chupinStandardPants = new Pants(750, standardQuality, chupinPantType);
+	auto chupinPremiumPants = new Pants(750, premiumQuality, chupinPantType);
 
-	// INIT SHIRTS MAO STANDARD
-	auto shirtShortMaoStandard = new Shirt(maoNeck, shortSleeve, standardQuality);
-	auto shirtLongMaoStandard = new Shirt(maoNeck, longSleeve, standardQuality);
+	// INIT SHIRTS SHORTS MAO
+	auto shirtShortMaoStandard = new Shirt(100, standardQuality, maoNeck, shortSleeve);
+	auto shirtShortMaoPremium = new Shirt(100, premiumQuality, maoNeck, shortSleeve );
 
-	// INIT SHIRTS MAO PREMIUM
-	auto shirtShortMaoPremium = new Shirt(maoNeck, shortSleeve, premiumQuality);
-	auto shirtLongMaoPremium = new Shirt(maoNeck, longSleeve, premiumQuality);
+	// INIT SHIRTS SHORTS COMMON
+	auto shirtShortCommonStandard = new Shirt(150, standardQuality, commonNeck, shortSleeve);
+	auto shirtShortCommonPremium = new Shirt(150, premiumQuality, commonNeck, shortSleeve);
 
-	// INIT SHIRTS COMMON STANDARD
-	auto shirtShortCommonStandard = new Shirt(commonNeck, shortSleeve, standardQuality);
-	auto shirtLongCommonStandard = new Shirt(commonNeck, longSleeve, standardQuality);
+	// INIT SHIRTS LONG MAO
+	auto shirtLongMaoStandard = new Shirt(75, standardQuality, maoNeck, longSleeve);
+	auto shirtLongMaoPremium = new Shirt(75, premiumQuality, maoNeck, longSleeve);
 
-	// INIT SHIRTS COMMON PREMIUM
-	auto shirtShortCommonPremium = new Shirt(commonNeck, shortSleeve, premiumQuality);
-	auto shirtLongCommonPremium = new Shirt(commonNeck, longSleeve, premiumQuality);
+	// INIT SHIRTS LONG COMMON
+	auto shirtLongCommonStandard = new Shirt(175, standardQuality, commonNeck, longSleeve);
+	auto shirtLongCommonPremium = new Shirt(175, premiumQuality, commonNeck, longSleeve);
+	
 	
 	return std::map<ClothesType, Clothes*> {
 		{ ClothesType::CommonPantsStandard, commonStandardPants },

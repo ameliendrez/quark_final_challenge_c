@@ -7,9 +7,11 @@
 
 class Quality
 {
+	friend class StandardQuality;
+	friend class PremiumQuality;
 public:
 	virtual ~Quality() = default;
-	const std::string* getName() const;
+	const char* getName() const;
 	float getRate();
 	void setRate(float rate);
 	static Quality* selectQuality(int qualitySelected);
@@ -17,7 +19,7 @@ public:
 protected:
 	float rate;
 private:
-	const std::string* name;
+	const char* name;
 };
 
 #endif //QUALITY

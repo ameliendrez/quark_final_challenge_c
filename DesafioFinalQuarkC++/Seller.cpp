@@ -1,5 +1,12 @@
 #include "Seller.h"
 
+Seller::Seller(std::string name, std::string lastName, int id)
+{
+	this->name = name;
+	this->lastName = lastName;
+	this->id = id;
+}
+
 std::string Seller::getName()
 {
 	return this->name;

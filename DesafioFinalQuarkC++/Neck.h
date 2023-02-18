@@ -7,9 +7,11 @@
 
 class Neck
 {
+	friend class CommonNeck;
+	friend class MaoNeck;
 public:
 	virtual ~Neck() = default;
-	const std::string* getName() const;
+	const char* getName() const;
 	float getRate();
 	void setRate(float rate);
 	static Neck* selectNeck(int neckSelected);
@@ -17,7 +19,7 @@ public:
 protected:
 	float rate;
 private:
-	const std::string* name;
+	const char* name;
 };
 
 #endif //NECK

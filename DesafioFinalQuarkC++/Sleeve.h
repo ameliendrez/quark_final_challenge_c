@@ -1,15 +1,16 @@
 #ifndef SLEEVE
 #define SLEEVE
 
-#include <string>
 #include <map>
 #include "SleeveFactory.h"
 
 class Sleeve
 {
+	friend class ShortSleeve;
+	friend class LongSleeve;
 public:
 	virtual ~Sleeve() = default;
-	const std::string* getName() const;
+	const char* getName() const;
 	float getRate();
 	void setRate(float rate);
 	static Sleeve* selectSleeve(int SleeveSelected);
@@ -17,7 +18,7 @@ public:
 protected:
 	float rate;
 private:
-	const std::string* name;
+	const char* name;
 };
 
 #endif //SLEEVE

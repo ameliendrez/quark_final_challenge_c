@@ -2,4 +2,5 @@
 CommonNeck::CommonNeck()
 {
 	this->rate = 0.3f;
+	this->name = "Common";
 }

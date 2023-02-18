@@ -1,11 +1,6 @@
 #include "PantsType.h"
 #include "PantsTypeFactory.h"
 
-const std::string* PantsType::getName() const
-{
-	return name;
-}
-
 float PantsType::getRate()
 {
 	return this->rate;

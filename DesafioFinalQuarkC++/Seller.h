@@ -4,6 +4,7 @@
 class Seller
 {
 public:
+	Seller(std::string name, std::string lastName, int id);
 	std::string getName();
 	std::string getLastName();
 	int getId();

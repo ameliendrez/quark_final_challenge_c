@@ -10,19 +10,12 @@
 class Pants : public Clothes
 {
 public:
-	Pants(PantsType* pantsType, Quality* quality);
+	Pants(int stock, Quality* quality, PantsType* pantsType);
 	virtual ~Pants() = default;
-	const std::string* getName() const;
-	float getRate();
-	void setRate(float rate);
-	static Pants* selectPants(int pantsSelected);
-	void setPantsType(PantsType* pantsType);
-	//static std::map<PantsType, Pants*> getConstants();
+	std::string getName() override;
+	float calculateFinalPrice() override;
 protected:
-	float rate;
-	PantsType pantsType;
-private:
-	const std::string* name;
+	PantsType* pantsType;
 };
 
 #endif //PANTS

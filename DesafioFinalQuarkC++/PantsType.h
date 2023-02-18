@@ -7,9 +7,11 @@
 
 class PantsType
 {
+	friend class ChupinPants;
+	friend class CommonPants;
 public:
 	virtual ~PantsType() = default;
-	const std::string* getName() const;
+	const char* getName() const;
 	float getRate();
 	void setRate(float rate);
 	static PantsType* selectPantsType(int pantsTypeSelected);
@@ -17,7 +19,7 @@ public:
 protected:
 	float rate;
 private:
-	const std::string* name;
+	const char* name;
 };
 
 #endif //PANTS_TYPE
