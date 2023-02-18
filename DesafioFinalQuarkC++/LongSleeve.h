@@ -1,5 +1,5 @@
-#ifndef LONG_Sleeve
-#define LONG_Sleeve
+#ifndef LONG_SLEEVE
+#define LONG_SLEEVE
 
 #include "Sleeve.h"
 
@@ -9,4 +9,4 @@ public:
 	LongSleeve();
 };
 
-#endif //LONG_Sleeve
+#endif //LONG_SLEEVE

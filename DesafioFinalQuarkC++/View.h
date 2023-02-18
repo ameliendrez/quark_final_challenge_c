@@ -16,12 +16,12 @@ private:
 public:
 	View();
 	~View() override;
-	void selectTypeOfClothes(const char* option, bool& isValidOption);
-	void selectTypeOfSleeve(const char* option, bool& isValidOption);
-	void selectTypeOfNeck(const char* option, bool& isValidOption, const char* &optionQuality);
-	void selectTypeOfPants(const char* option, bool& isValidOption, const char* optionQuality);
-	void selectTypeOfQuality(const char* option, bool& isValidOption, const char*& optionQuality);
-	void backToMenu(const char* option, bool& isValidOption);
+	void selectTypeOfClothes(std::string option, bool& isValidOption);
+	void selectTypeOfSleeve(std::string option, bool& isValidOption);
+	void selectTypeOfNeck(std::string option, bool& isValidOption, std::string &optionQuality);
+	void selectTypeOfPants(std::string option, bool& isValidOption, std::string optionQuality);
+	void selectTypeOfQuality(std::string option, bool& isValidOption);
+	void backToMenu(std::string option, bool& isValidOption);
 	void showTitleQuote();
 	void showTextSeparator();
 	void showText(const char* text) override;
@@ -35,12 +35,12 @@ public:
 	void showQuotesHistory();
 	void showMenuCreateQuote();
 	void showMenuTakeSleeve();
-	void showMenuTakeNeck(const char* optionSleeve);
+	void showMenuTakeNeck(std::string optionSleeve);
 	void showMenuTakeTypePants();
-	void showMenuTakeQuality(const char* optionQuality);
+	void showMenuTakeQuality(std::string optionQuality);
 	float showMenuPrice();
 	int showMenuStock(int currentStock);
-	void showMenuCreateQuoteShirt(const char* optionSleeve, const char* optionNeck, const char* optionQuality);
+	void showMenuCreateQuoteShirt(std::string optionSleeve, const char* optionNeck, std::string optionQuality);
 	void showMenuCreateQuotePant(const char* optionType, const char* optionQuality);
 	void finishQuote();
 };

@@ -2,7 +2,6 @@
 #define PANTS
 
 #include <string>
-#include <map>
 #include "Clothes.h"
 #include "PantsType.h"
 #include "Quality.h"

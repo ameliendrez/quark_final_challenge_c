@@ -1,7 +1,7 @@
 #include "Sleeve.h"
 #include "SleeveFactory.h"
 
-const std::string* Sleeve::getName() const
+const char* Sleeve::getName() const
 {
 	return name;
 }

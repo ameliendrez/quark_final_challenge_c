@@ -14,6 +14,17 @@ std::string SalesChannel::getName()
 	return this->name;
 }
 
+std::string SalesChannel::getCurrentQuality()
+{
+	return this->currentQualityId;
+}
+
+void SalesChannel::setCurrentQuality(std::string currentQuality)
+{
+	this->currentQualityId = currentQuality;
+}
+
+
 std::string SalesChannel::getAddress()
 {
 	return this->address;
@@ -56,7 +67,7 @@ Quote* SalesChannel::getCurrentQuote()
 	return this->currentQuote;
 }
 
-Quote* SalesChannel::setCurrentQuote(Quote* quote)
+void SalesChannel::setCurrentQuote(Quote* quote)
 {
 	this->currentQuote = quote;
 }

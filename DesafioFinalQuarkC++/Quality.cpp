@@ -1,7 +1,7 @@
 #include "Quality.h"
 #include "QualityFactory.h"
 
-const std::string* Quality::getName() const
+const char* Quality::getName() const
 {
 	return name;
 }

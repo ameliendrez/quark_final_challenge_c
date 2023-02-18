@@ -1,7 +1,7 @@
 #include "Neck.h"
 #include "NeckFactory.h"
 
-const std::string* Neck::getName() const
+const char* Neck::getName() const
 {
 	return name;
 }

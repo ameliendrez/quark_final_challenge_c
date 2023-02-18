@@ -1,6 +1,12 @@
 #include "PantsType.h"
 #include "PantsTypeFactory.h"
 
+const char* PantsType::getName() const
+{
+	return this->name;
+}
+
+
 float PantsType::getRate()
 {
 	return this->rate;

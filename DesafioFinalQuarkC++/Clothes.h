@@ -1,10 +1,8 @@
 #ifndef CLOTHES
 #define CLOTHES
 
-#include "ClothesFactory.h"
 #include "Quality.h"
 #include <string>
-#include <map>
 
 class Clothes
 {
@@ -12,7 +10,7 @@ public:
 	Clothes(int stock, Quality* quality);
 	virtual ~Clothes() = default;
 	virtual float calculateFinalPrice();
-	virtual std::string getName();
+	virtual std::string getName() = 0;
 	Quality* getQuality();
 	void setQuality(Quality* quality);
 	float getPrice();

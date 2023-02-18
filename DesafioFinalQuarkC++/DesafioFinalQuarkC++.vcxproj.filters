@@ -183,7 +183,9 @@
     <ClCompile Include="PantsType.cpp">
       <Filter>Domain\Clothes\Types\Pants\PantsType</Filter>
     </ClCompile>
-    <ClCompile Include="Pants.cpp" />
+    <ClCompile Include="Pants.cpp">
+      <Filter>Domain\Clothes\Types\Pants</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Seller.h">
@@ -261,6 +263,8 @@
     <ClInclude Include="PantsType.h">
       <Filter>Domain\Clothes\Types\Pants\PantsType</Filter>
     </ClInclude>
-    <ClInclude Include="Pants.h" />
+    <ClInclude Include="Pants.h">
+      <Filter>Domain\Clothes\Types\Pants</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

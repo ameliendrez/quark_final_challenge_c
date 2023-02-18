@@ -14,7 +14,6 @@ public:
 	virtual void showTextInLine(const char* text) = 0;
 	virtual void showTextInLine(const std::string& text) = 0;
 	virtual void showTextInLine(int text) = 0;
-	virtual void showBackToMenuMessage();
-	//virtual void setWeaponMenuItems(const std::map<WeaponType, Weapon*>& items) = 0;
+	virtual void showBackToMenuMessage() = 0;
 };
 #endif // IVIEW_H

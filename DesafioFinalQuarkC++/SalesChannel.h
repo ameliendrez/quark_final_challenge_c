@@ -1,5 +1,7 @@
 #pragma once
 #include <list>
+
+#include "ClothesFactory.h"
 #include "Quote.h"
 #include "Seller.h"
 
@@ -9,8 +11,10 @@ public:
 	SalesChannel(std::string name, std::string address, Seller* seller);
 	std::string getName();
 	std::string getAddress();
+	std::string getCurrentQuality();
+	void setCurrentQuality(std::string currentQuality);
 	Quote* getCurrentQuote();
-	Quote* setCurrentQuote(Quote* quote);
+	void setCurrentQuote(Quote* quote);
 	Seller* getCurrentSeller();
 	void setCurrentSeller(Seller* seller);
 	void createQuote(Clothes* item);
@@ -24,5 +28,6 @@ private:
 	std::list<Quote*> quotes;
 	Seller* seller;
 	Quote* currentQuote;
+	std::string currentQualityId;
 };
 

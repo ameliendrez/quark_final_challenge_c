@@ -34,6 +34,16 @@ void Presenter::getSalesChannelSellerId()
 	this->mView->showText(std::to_string(this->salesChannel->getCurrentSeller()->getId()));
 }
 
+std::string Presenter::getCurrentCuality()
+{
+	return this->salesChannel->getCurrentQuality();
+}
+
+void Presenter::setCurrentQuality(std::string currentQualityId)
+{
+	this->salesChannel->setCurrentQuality(currentQualityId);
+}
+
 void Presenter::getSalesChannelQuoteHistory()
 {
 	std::list<Quote*> quotes = this->salesChannel->getQuotes();
@@ -81,7 +91,7 @@ void Presenter::finishQuote()
 	this->showQuoteIntormation(quote);
 }
 
-void Presenter::createQuoteShirt(const char* optionSleeve, const char* optionNeck, const char* optionQuality)
+void Presenter::createQuoteShirt(std::string optionSleeve, const char* optionNeck, std::string optionQuality)
 {
 	int id = getShirtId(optionSleeve, optionNeck, optionQuality);
 	Clothes* shirt = this->salesChannel->selectClothes(id);
@@ -128,9 +138,11 @@ int Presenter::getPantId(const char* optionType, const char* optionQuality)
 	{
 		id = 3;
 	}
+
+	return id;
 }
 
-int Presenter::getShirtId(const char* optionSleeve, const char* optionNeck, const char* optionQuality)
+int Presenter::getShirtId(std::string optionSleeve, const char* optionNeck, std::string optionQuality)
 {
 	int id;
 

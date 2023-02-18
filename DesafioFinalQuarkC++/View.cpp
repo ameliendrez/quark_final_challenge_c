@@ -8,7 +8,7 @@
 
 class Clothes;
 const std::string ANY_KEY_MESSAGE = "Escribe cualquier tecla para continuar.";
-const std::string INVALID_OPTION_MESSAGE = "La opci�n ingresada es inv�lida, por favor reintente.";
+const std::string INVALID_OPTION_MESSAGE = "La opcion ingresada es invalida, por favor reintente.";
 
 View::View()
 {
@@ -124,7 +124,7 @@ float View::showMenuPrice()
 	return price;
 }
 
-void View::showMenuCreateQuoteShirt(const char* optionSleeve, const char* optionNeck, const char* optionQuality)
+void View::showMenuCreateQuoteShirt(std::string optionSleeve, const char* optionNeck, std::string optionQuality)
 {
 	this->presenter->createQuoteShirt(optionSleeve, optionNeck, optionQuality);
 
@@ -180,11 +180,37 @@ void View::finishQuote()
 	showMainMenu();
 }
 
-void View::selectTypeOfQuality(const char* option, bool& isValidOption, const char*& optionQuality)
+void View::showMenuTakeQuality(std::string optionQuality)
+{
+	std::string optionString = "";
+	bool isValidOption = true;
+	do
+	{
+		showTitleQuote();
+		showBackToMenuMessage();
+		showText("PASO 3: Seleccione la calidad de la prenda");
+
+		showText("1) Standard");
+		showText("2) Premium");
+
+		showTextSeparator();
+
+		std::cin >> optionString;
+		selectTypeOfQuality(optionString, isValidOption);
+		std::cin.get();
+	} while (!isValidOption);
+
+	if (optionString.c_str() == "3")
+	{
+		showMainMenu();
+	}
+}
+
+void View::selectTypeOfQuality(std::string option, bool& isValidOption)
 {
 	if (option == "1" || option == "2")
 	{
-		optionQuality = option;
+		this->presenter->setCurrentQuality(option);
 		isValidOption = true;
 		std::cin.get();
 	}
@@ -206,10 +232,10 @@ void View::selectTypeOfQuality(const char* option, bool& isValidOption, const ch
 	}
 }
 
-void View::showMenuTakeNeck(const char* optionSleeve)
+void View::showMenuTakeNeck(std::string optionSleeve)
 {
 	std::string optionString = "";
-	const char* optionQuality = "";
+	std::string optionQuality = "";
 	bool isValidOption = true;
 	do
 	{
@@ -227,10 +253,12 @@ void View::showMenuTakeNeck(const char* optionSleeve)
 		std::cin.get();
 	} while (!isValidOption);
 
-	if(optionQuality == "1" || optionQuality == "2")
-	{
-		showMenuCreateQuoteShirt(optionSleeve, optionString.c_str(), optionQuality);
-	}
+	std::string oq = this->presenter->getCurrentCuality();
+	
+	//(oq == "1" || oq == "2")
+	//
+		showMenuCreateQuoteShirt("1", "1", "1");
+	//
 
 	if (optionString.c_str() == "3")
 	{
@@ -238,7 +266,7 @@ void View::showMenuTakeNeck(const char* optionSleeve)
 	}
 }
 
-void View::selectTypeOfNeck(const char* option, bool& isValidOption, const char* &optionQuality)
+void View::selectTypeOfNeck(std::string option, bool& isValidOption, std::string &optionQuality)
 {
 	if (option == "1" || option == "2")
 	{
@@ -290,7 +318,7 @@ void View::showMenuTakeSleeve()
 	}
 }
 
-void View::selectTypeOfSleeve(const char* option, bool& isValidOption)
+void View::selectTypeOfSleeve(std::string option, bool& isValidOption)
 {
 	if (option == "1" || option == "2")
 	{
@@ -348,7 +376,7 @@ void View::showMenuTakeTypePants()
 	}
 }
 
-void View::selectTypeOfPants(const char* option, bool& isValidOption, const char* optionQuality)
+void View::selectTypeOfPants(std::string option, bool& isValidOption, std::string optionQuality)
 {
 	if (option == "1" || option == "2")
 	{
@@ -391,7 +419,7 @@ void View::showMenuCreateQuote()
 		showTextSeparator();
 
 		std::cin >> optionString;
-		selectTypeOfClothes(optionString.c_str(), isValidOption);
+		selectTypeOfClothes(optionString, isValidOption);
 		std::cin.get();
 	} while (!isValidOption);
 
@@ -401,7 +429,7 @@ void View::showMenuCreateQuote()
 	}
 }
 
-void View::selectTypeOfClothes(const char* option, bool& isValidOption)
+void View::selectTypeOfClothes(std::string option, bool& isValidOption)
 {
 	if (option == "1")
 	{
@@ -450,14 +478,25 @@ void View::showQuotesHistory()
 		showBackToMenuMessage();
 		
 		std::cin >> optionString;
+
 		backToMenu(optionString.c_str(), isValidOption);
+		
+		if (optionString == "3")
+		{
+			isValidOption = true;
+		}
+		//backToMenu(optionString.c_str(), isValidOption);
 		std::cin.get();
 	} while (!isValidOption);
 
-	showMainMenu();
+	if (optionString.c_str() == "3")
+	{
+		showMainMenu();
+	}
+	
 }
 
-void View::backToMenu(const char* option, bool& isValidOption)
+void View::backToMenu(std::string option, bool& isValidOption)
 {
 	if (option == "3")
 	{
