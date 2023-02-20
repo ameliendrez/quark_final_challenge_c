@@ -11,8 +11,6 @@ public:
 	SalesChannel(std::string name, std::string address, Seller* seller);
 	std::string getName();
 	std::string getAddress();
-	std::string getCurrentQuality();
-	void setCurrentQuality(std::string currentQuality);
 	Quote* getCurrentQuote();
 	void setCurrentQuote(Quote* quote);
 	Seller* getCurrentSeller();
@@ -22,12 +20,16 @@ public:
 	static Clothes* selectClothes(int clothesSelected);
 	static std::map<ClothesType, Clothes*> getConstants();
 	Quote* saveLastQuote();
+	int getShirtId(std::string optionSleeve, std::string optionNeck, std::string optionQuality);
+	int getPantId(std::string optionType, std::string optionQuality);
+	void setPriceToQuote(float price);
+	void setStockToQuote(int stock);
+	void clearCurrentQuote();
 private:
 	std::string name;
 	std::string address;
 	std::list<Quote*> quotes;
 	Seller* seller;
 	Quote* currentQuote;
-	std::string currentQualityId;
 };
 

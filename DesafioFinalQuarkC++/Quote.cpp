@@ -1,5 +1,5 @@
 #include "Quote.h"
-
+#include <ctime>
 
 Quote::Quote(int id, Seller* seller, time_t createdAt, Clothes* item)
 {
@@ -16,7 +16,14 @@ int Quote::getId()
 
 std::string Quote::getDateTime()
 {
-	return std::to_string(this->createdAt);
+	struct tm* time = new tm();
+	char dateTime[64];
+	localtime_s(time, &this->createdAt);
+	std::strftime(dateTime, sizeof dateTime, "%d/%m/%Y %H:%M:%S", time);
+
+	delete time;
+	
+	return dateTime;
 }
 
 int Quote::getSellerId()
@@ -41,7 +48,7 @@ int Quote::getQuantity()
 
 float Quote::getGrandTotal()
 {
-	return this->item->calculateFinalPrice() * this->quantity;
+	return this->price * this->quantity;
 }
 
 void Quote::setQuantity(int quantity)
@@ -56,7 +63,8 @@ float Quote::getPrice()
 
 void Quote::setPrice(float price)
 {
-	this->price = price;
+	this->item->setPrice(price);
+	this->price = this->item->calculateFinalPrice();
 }
 
 int Quote::getItemStock()

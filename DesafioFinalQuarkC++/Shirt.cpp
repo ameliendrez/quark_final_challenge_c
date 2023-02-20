@@ -8,7 +8,11 @@ Shirt::Shirt(int stock, Quality* quality, Neck* neck, Sleeve* sleeve): Clothes(s
 
 float Shirt::calculateFinalPrice()
 {
-	return this->price + (this->price * this->neck->getRate()) + (this->price * this->sleeve->getRate());
+	//float rate = this->neck->getRate() + this->sleeve->getRate();
+	//return this->price + (this->price * rate);
+	auto const finalPrice = this->price + (this->price * this->neck->getRate()) + (this->price * this->sleeve->getRate());
+	
+	return finalPrice + (finalPrice * this->quality->getRate());
 }
 
 std::string Shirt::getName()

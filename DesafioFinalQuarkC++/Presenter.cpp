@@ -13,7 +13,6 @@ Presenter::~Presenter()
 	delete salesChannel;
 };
 
-
 void Presenter::getSalesChannelName()
 {
 	this->mView->showTextInLine(this->salesChannel->getName());
@@ -32,16 +31,6 @@ void Presenter::getSalesChannelSellerName()
 void Presenter::getSalesChannelSellerId()
 {
 	this->mView->showText(std::to_string(this->salesChannel->getCurrentSeller()->getId()));
-}
-
-std::string Presenter::getCurrentCuality()
-{
-	return this->salesChannel->getCurrentQuality();
-}
-
-void Presenter::setCurrentQuality(std::string currentQualityId)
-{
-	this->salesChannel->setCurrentQuality(currentQualityId);
 }
 
 void Presenter::getSalesChannelQuoteHistory()
@@ -91,23 +80,28 @@ void Presenter::finishQuote()
 	this->showQuoteIntormation(quote);
 }
 
-void Presenter::createQuoteShirt(std::string optionSleeve, const char* optionNeck, std::string optionQuality)
+void Presenter::clearQuoteCreation()
 {
-	int id = getShirtId(optionSleeve, optionNeck, optionQuality);
-	Clothes* shirt = this->salesChannel->selectClothes(id);
-	this->salesChannel->createQuote(shirt);
+	this->salesChannel->clearCurrentQuote();
 }
 
-void Presenter::createQuotePant(const char* optionType, const char* optionQuality)
+void Presenter::createQuotePant()
 {
-	int id = getPantId(optionType, optionQuality);
+	int id = this->salesChannel->getPantId(this->lastSelectedPantsType, this->lastSelectedQuality);
 	Clothes* pant = this->salesChannel->selectClothes(id);
 	this->salesChannel->createQuote(pant);
 }
 
+void Presenter::createQuoteShirt()
+{
+	int id = this->salesChannel->getShirtId(this->lastSelectedSleeve, this->lastSelectedNeck, this->lastSelectedQuality);
+	Clothes* shirt = this->salesChannel->selectClothes(id);
+	this->salesChannel->createQuote(shirt);
+}
+
 void Presenter::setPriceToQuote(float price)
 {
-	this->salesChannel->getCurrentQuote()->setPrice(price);
+	this->salesChannel->setPriceToQuote(price);
 }
 
 int Presenter::getCurrentStock()
@@ -117,67 +111,48 @@ int Presenter::getCurrentStock()
 
 void Presenter::setStockToQuote(int stock)
 {
-	this->salesChannel->getCurrentQuote()->setQuantity(stock);
-}
-int Presenter::getPantId(const char* optionType, const char* optionQuality)
-{
-	int id;
-	if (optionType == "1" && optionQuality == "1")
-	{
-		id = 2;
-	}
-	else if(optionType == "1" && optionQuality == "2")
-	{
-		id = 4;
-	}
-	else if (optionType == "2" && optionQuality == "1")
-	{
-		id = 1;
-	}
-	else if (optionType == "2" && optionQuality == "2")
-	{
-		id = 3;
-	}
-
-	return id;
+	this->salesChannel->setStockToQuote(stock);
 }
 
-int Presenter::getShirtId(std::string optionSleeve, const char* optionNeck, std::string optionQuality)
-{
-	int id;
 
-	if (optionSleeve == "1" && optionNeck == "1" && optionQuality == "1")
-	{
-		id = 5;
-	}
-	else if (optionSleeve == "1" && optionNeck == "1" && optionQuality == "2")
-	{
-		id = 9;
-	}
-	else if (optionSleeve == "1" && optionNeck == "2" && optionQuality == "1")
-	{
-		id = 6;
-	}
-	else if (optionSleeve == "1" && optionNeck == "2" && optionQuality == "2")
-	{
-		id = 10;
-	}
-	else if (optionSleeve == "2" && optionNeck == "1" && optionQuality == "1")
-	{
-		id = 7;
-	}
-	else if (optionSleeve == "2" && optionNeck == "1" && optionQuality == "2")
-	{
-		id = 11;
-	}
-	else if (optionSleeve == "2" && optionNeck == "2" && optionQuality == "1")
-	{
-		id = 8;
-	}
-	else if (optionSleeve == "2" && optionNeck == "2" && optionQuality == "2")
-	{
-		id = 12;
-	}
-	
-	return id;
+std::string Presenter::getLastSelectedSleeve()
+{
+	return this->lastSelectedSleeve;
+}
+
+std::string Presenter::getLastSelectedNeck()
+{
+	return this->lastSelectedNeck;
+}
+
+
+std::string Presenter::getLastSelectedPantsType()
+{
+	return this->lastSelectedPantsType;
+}
+
+
+std::string Presenter::getLastSelectedQuality()
+{
+	return this->lastSelectedQuality;
+}
+
+void Presenter::setLastSelectedSleeve(std::string selectedSleeve)
+{
+	this->lastSelectedSleeve = selectedSleeve;
+}
+
+void Presenter::setLastSelectedNeck(std::string selectedNeck)
+{
+	this->lastSelectedNeck = selectedNeck;
+}
+
+void Presenter::setLastSelectedPantsType(std::string selectedPantsType)
+{
+	this->lastSelectedPantsType = selectedPantsType;
+}
+
+void Presenter::setLastSelectedQuality(std::string selectedQuality)
+{
+	this->lastSelectedQuality = selectedQuality;
 }

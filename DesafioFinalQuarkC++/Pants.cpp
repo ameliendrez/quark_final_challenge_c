@@ -6,7 +6,9 @@ Pants::Pants(int stock, Quality* quality, PantsType* pantsType) : Clothes(stock,
 
 float Pants::calculateFinalPrice()
 {
-	return this->price + (this->price * this->pantsType->getRate());
+	auto const finalPrice = this->price + (this->price * this->pantsType->getRate());
+	
+	return finalPrice + (finalPrice * this->quality->getRate());
 }
 
 std::string Pants::getName()

@@ -28,7 +28,6 @@ void View::showText(const char* text)
 	std::cout << text << std::endl;
 }
 
-// Polymorphism Rules, BUT DRY? 
 void View::showText(const std::string& text)
 {
 	std::cout << text << std::endl;
@@ -44,13 +43,11 @@ void View::showText(int text)
 	std::cout << text << std::endl;
 }
 
-
 void View::showTextInLine(const char* text)
 {
 	std::cout << text;
 }
 
-// Polymorphism Rules, BUT DRY? 
 void View::showTextInLine(const std::string& text)
 {
 	std::cout << text;
@@ -88,7 +85,6 @@ int View::showMenuStock(int currentStock)
 	{
 		showTitleQuote();
 		showTextSeparator();
-		//showBackToMenuMessage();
 		showText("");
 		showText("INFORMACION:");
 		showTextInLine("EXISTE ");
@@ -112,7 +108,6 @@ float View::showMenuPrice()
 	{
 		showTitleQuote();
 		showTextSeparator();
-		//showBackToMenuMessage();
 		showText("PASO 4: ingrese precio unitario de la prenda a cotizar");
 
 		showTextSeparator();
@@ -124,40 +119,62 @@ float View::showMenuPrice()
 	return price;
 }
 
-void View::showMenuCreateQuoteShirt(std::string optionSleeve, const char* optionNeck, std::string optionQuality)
+void View::showMenuPriceAndStock()
 {
-	this->presenter->createQuoteShirt(optionSleeve, optionNeck, optionQuality);
-
 	float price = showMenuPrice();
 	this->presenter->setPriceToQuote(price);
 
 	int currentStock = this->presenter->getCurrentStock();
 	int stock = showMenuStock(currentStock);
 
-	if (stock < currentStock)
+	if (stock <= currentStock)
 	{
 		this->presenter->setStockToQuote(stock);
+		finishQuote();
 	}
-
-	finishQuote();
+	else
+	{
+		this->showMenuOutOfStock(currentStock, stock);
+	}
 }
 
-void View::showMenuCreateQuotePant(const char* optionType, const char* optionQuality)
+void View::showMenuOutOfStock(int currentStock, int quantitySelected)
 {
-	this->presenter->createQuotePant(optionType, optionQuality);
+	showTitleQuote();
+	showBackToMenuMessage();
 
-	float price = showMenuPrice();
-	this->presenter->setPriceToQuote(price);
+	showText("No se puede finalizar la cotizacion. No contamos con el stock solicitado");
+	showTextInLine("Stock Disponible: ");
+	showText(currentStock);
+	showTextInLine("Stock Solicitado: ");
+	showText(quantitySelected);
+	showBackToMenuMessage();
+	
+	this->presenter->clearQuoteCreation();
 
-	int currentStock = this->presenter->getCurrentStock();
-	int stock = showMenuStock(currentStock);
+	std::string optionString = "";
+	bool isValidOption = true;
 
-	if (stock < currentStock)
+	do
 	{
-		this->presenter->setStockToQuote(stock);
-	}
+		std::cin >> optionString;
+		backToMenu(optionString, isValidOption);
+	} while (!isValidOption);
 
-	finishQuote();
+	showMainMenu();
+}
+
+
+void View::showMenuCreateQuoteShirt()
+{
+	this->presenter->createQuoteShirt();
+	this->showMenuPriceAndStock();
+}
+
+void View::showMenuCreateQuotePant()
+{
+	this->presenter->createQuotePant();
+	this->showMenuPriceAndStock();
 }
 
 void View::finishQuote()
@@ -173,18 +190,18 @@ void View::finishQuote()
 	do
 	{
 		std::cin >> optionString;
-		backToMenu(optionString.c_str(), isValidOption);
-		std::cin.get();
+		backToMenu(optionString, isValidOption);
 	} while (!isValidOption);
 
 	showMainMenu();
 }
 
-void View::showMenuTakeQuality(std::string optionQuality)
+void View::showMenuTakeQuality()
 {
 	std::string optionString = "";
-	bool isValidOption = true;
-	do
+	bool isValidOption = false;
+
+	while (!isValidOption)
 	{
 		showTitleQuote();
 		showBackToMenuMessage();
@@ -196,48 +213,25 @@ void View::showMenuTakeQuality(std::string optionQuality)
 		showTextSeparator();
 
 		std::cin >> optionString;
-		selectTypeOfQuality(optionString, isValidOption);
-		std::cin.get();
-	} while (!isValidOption);
+		isValidOption = checkValidOption(optionString);
+	}
 
-	if (optionString.c_str() == "3")
+	if (optionString == "1" || optionString == "2")
+	{
+		this->presenter->setLastSelectedQuality(optionString);
+	}
+	else
 	{
 		showMainMenu();
 	}
 }
 
-void View::selectTypeOfQuality(std::string option, bool& isValidOption)
-{
-	if (option == "1" || option == "2")
-	{
-		this->presenter->setCurrentQuality(option);
-		isValidOption = true;
-		std::cin.get();
-	}
-	else if (option == "3")
-	{
-		isValidOption = true;
-		std::cin.get();
-	}
-	else
-	{
-		isValidOption = false;
-	}
-
-	if (!isValidOption)
-	{
-		std::system("cls");
-		showText(INVALID_OPTION_MESSAGE);
-		std::cin.get();
-	}
-}
-
-void View::showMenuTakeNeck(std::string optionSleeve)
+void View::showMenuTakeNeck()
 {
 	std::string optionString = "";
-	std::string optionQuality = "";
-	bool isValidOption = true;
-	do
+	bool isValidOption = false;
+
+	while (!isValidOption)
 	{
 		showTitleQuote();
 		showBackToMenuMessage();
@@ -249,54 +243,31 @@ void View::showMenuTakeNeck(std::string optionSleeve)
 		showTextSeparator();
 
 		std::cin >> optionString;
-		selectTypeOfNeck(optionString.c_str(), isValidOption, optionQuality);
-		std::cin.get();
-	} while (!isValidOption);
-
-	std::string oq = this->presenter->getCurrentCuality();
-	
-	//(oq == "1" || oq == "2")
-	//
-		showMenuCreateQuoteShirt("1", "1", "1");
-	//
-
-	if (optionString.c_str() == "3")
-	{
-		showMainMenu();
+		isValidOption = checkValidOption(optionString);
 	}
-}
 
-void View::selectTypeOfNeck(std::string option, bool& isValidOption, std::string &optionQuality)
-{
-	if (option == "1" || option == "2")
+	if (optionString == "1" || optionString == "2")
 	{
-		showMenuTakeQuality(optionQuality);
-		isValidOption = true;
-		std::cin.get();
-	}
-	else if (option == "3")
-	{
-		isValidOption = true;
-		std::cin.get();
+		this->presenter->setLastSelectedNeck(optionString);
+		showMenuTakeQuality();
+
+		if (this->presenter->getLastSelectedQuality() != "")
+		{
+			showMenuCreateQuoteShirt();
+		}
 	}
 	else
 	{
-		isValidOption = false;
-	}
-
-	if (!isValidOption)
-	{
-		std::system("cls");
-		showText(INVALID_OPTION_MESSAGE);
-		std::cin.get();
+		showMainMenu();
 	}
 }
 
 void View::showMenuTakeSleeve()
 {
 	std::string optionString = "";
-	bool isValidOption = true;
-	do
+	bool isValidOption = false;
+
+	while (!isValidOption)
 	{
 		showTitleQuote();
 		showBackToMenuMessage();
@@ -308,48 +279,26 @@ void View::showMenuTakeSleeve()
 		showTextSeparator();
 
 		std::cin >> optionString;
-		selectTypeOfSleeve(optionString.c_str(), isValidOption);
-		std::cin.get();
-	} while (!isValidOption);
-
-	if (optionString.c_str() == "3")
-	{
-		showMainMenu();
+		isValidOption = checkValidOption(optionString);
 	}
-}
 
-void View::selectTypeOfSleeve(std::string option, bool& isValidOption)
-{
-	if (option == "1" || option == "2")
+	if (optionString == "1" || optionString == "2")
 	{
-		showMenuTakeNeck(option);
-		isValidOption = true;
-		std::cin.get();
-	}
-	else if (option == "3")
-	{
-		isValidOption = true;
-		std::cin.get();
+		this->presenter->setLastSelectedSleeve(optionString);
+		showMenuTakeNeck();
 	}
 	else
 	{
-		isValidOption = false;
-	}
-
-	if (!isValidOption)
-	{
-		std::system("cls");
-		showText(INVALID_OPTION_MESSAGE);
-		std::cin.get();
+		showMainMenu();
 	}
 }
 
 void View::showMenuTakeTypePants()
 {
 	std::string optionString = "";
-	bool isValidOption = true;
-	const char* optionQuality = "";
-	do
+	bool isValidOption = false;
+
+	while (!isValidOption)
 	{
 		showTitleQuote();
 		showBackToMenuMessage();
@@ -361,52 +310,31 @@ void View::showMenuTakeTypePants()
 		showTextSeparator();
 
 		std::cin >> optionString;
-		selectTypeOfPants(optionString.c_str(), isValidOption, optionQuality);
-		std::cin.get();
-	} while (!isValidOption);
-
-	if (optionQuality == "1" || optionQuality == "2")
-	{
-		showMenuCreateQuotePant( optionString.c_str(), optionQuality);
+		isValidOption = checkValidOption(optionString);
 	}
 
-	if (optionString.c_str() == "3")
+	if (optionString == "1" || optionString == "2")
+	{
+		this->presenter->setLastSelectedPantsType(optionString);
+		showMenuTakeQuality();
+
+		if (this->presenter->getLastSelectedQuality() != "")
+		{
+			showMenuCreateQuotePant();
+		}
+	}
+	else
 	{
 		showMainMenu();
 	}
 }
 
-void View::selectTypeOfPants(std::string option, bool& isValidOption, std::string optionQuality)
-{
-	if (option == "1" || option == "2")
-	{
-		showMenuTakeQuality(optionQuality);
-		isValidOption = true;
-		std::cin.get();
-	}
-	else if (option == "3")
-	{
-		isValidOption = true;
-		std::cin.get();
-	}
-	else
-	{
-		isValidOption = false;
-	}
-
-	if (!isValidOption)
-	{
-		std::system("cls");
-		showText(INVALID_OPTION_MESSAGE);
-		std::cin.get();
-	}
-}
-
-void View::showMenuCreateQuote()
+void View::showMenuInitQuote()
 {
 	std::string optionString = "";
-	bool isValidOption = true;
-	do
+	bool isValidOption = false;
+
+	while (!isValidOption)
 	{
 		std::system("cls");
 		showText("-== Cotizador Express - Cotizar ==-");
@@ -419,38 +347,32 @@ void View::showMenuCreateQuote()
 		showTextSeparator();
 
 		std::cin >> optionString;
-		selectTypeOfClothes(optionString, isValidOption);
-		std::cin.get();
-	} while (!isValidOption);
+		isValidOption = checkValidOption(optionString);
+	}
 
-	if (optionString.c_str() == "3")
+	if (optionString == "1")
 	{
+		showMenuTakeSleeve();
+	}
+	else if (optionString == "2")
+	{
+		showMenuTakeTypePants();
+	}
+	else
+	{
+		
 		showMainMenu();
 	}
 }
 
-void View::selectTypeOfClothes(std::string option, bool& isValidOption)
+bool View::checkValidOption(std::string option)
 {
-	if (option == "1")
-	{
-		showMenuTakeSleeve();
-		isValidOption = true;
-		std::cin.get();
-	}
-	else if (option == "2")
-	{
-		showMenuTakeTypePants();
-		isValidOption = true;
-		std::cin.get();
-	}
-	else if (option == "3")
+	bool isValidOption = false;
+
+	if (option == "1" || option == "2" || option == "3")
 	{
 		isValidOption = true;
 		std::cin.get();
-	}
-	else
-	{
-		isValidOption = false;
 	}
 
 	if (!isValidOption)
@@ -459,8 +381,9 @@ void View::selectTypeOfClothes(std::string option, bool& isValidOption)
 		showText(INVALID_OPTION_MESSAGE);
 		std::cin.get();
 	}
-}
 
+	return isValidOption;
+}
 
 void View::showQuotesHistory()
 {
@@ -479,21 +402,10 @@ void View::showQuotesHistory()
 		
 		std::cin >> optionString;
 
-		backToMenu(optionString.c_str(), isValidOption);
-		
-		if (optionString == "3")
-		{
-			isValidOption = true;
-		}
-		//backToMenu(optionString.c_str(), isValidOption);
-		std::cin.get();
+		backToMenu(optionString, isValidOption);
 	} while (!isValidOption);
 
-	if (optionString.c_str() == "3")
-	{
-		showMainMenu();
-	}
-	
+	showMainMenu();
 }
 
 void View::backToMenu(std::string option, bool& isValidOption)
@@ -564,7 +476,7 @@ void View::runOption(const char* option, bool& exitCondition)
 	}
 	else if (str_option == "2")
 	{
-		showMenuCreateQuote();
+		showMenuInitQuote();
 		exitCondition = false;
 	}
 	else if (str_option == "3")

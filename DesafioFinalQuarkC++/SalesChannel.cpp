@@ -2,6 +2,8 @@
 #include <iostream>
 #include <ctime>
 
+#include "Presenter.h"
+
 SalesChannel::SalesChannel(std::string name, std::string address, Seller* seller)
 {
 	this->name = name;
@@ -13,17 +15,6 @@ std::string SalesChannel::getName()
 {
 	return this->name;
 }
-
-std::string SalesChannel::getCurrentQuality()
-{
-	return this->currentQualityId;
-}
-
-void SalesChannel::setCurrentQuality(std::string currentQuality)
-{
-	this->currentQualityId = currentQuality;
-}
-
 
 std::string SalesChannel::getAddress()
 {
@@ -79,4 +70,85 @@ Quote* SalesChannel::saveLastQuote()
 	this->quotes.push_front(quote);
 
 	return quote;
+}
+
+void SalesChannel::setPriceToQuote(float price)
+{
+	this->currentQuote->setPrice(price);
+}
+
+void SalesChannel::setStockToQuote(int stock)
+{
+	this->currentQuote->setQuantity(stock);
+}
+
+void SalesChannel::clearCurrentQuote()
+{
+	Quote* quote = this->currentQuote;
+	this->currentQuote = nullptr;
+	delete quote;
+}
+
+
+int SalesChannel::getPantId(std::string optionType, std::string optionQuality)
+{
+	int id;
+	if (optionType == "1" && optionQuality == "1")
+	{
+		id = 2;
+	}
+	else if (optionType == "1" && optionQuality == "2")
+	{
+		id = 4;
+	}
+	else if (optionType == "2" && optionQuality == "1")
+	{
+		id = 1;
+	}
+	else if (optionType == "2" && optionQuality == "2")
+	{
+		id = 3;
+	}
+
+	return id;
+}
+
+int SalesChannel::getShirtId(std::string optionSleeve, std::string optionNeck, std::string optionQuality)
+{
+	int id;
+
+	if (optionSleeve == "1" && optionNeck == "1" && optionQuality == "1")
+	{
+		id = 5;
+	}
+	else if (optionSleeve == "1" && optionNeck == "1" && optionQuality == "2")
+	{
+		id = 9;
+	}
+	else if (optionSleeve == "1" && optionNeck == "2" && optionQuality == "1")
+	{
+		id = 6;
+	}
+	else if (optionSleeve == "1" && optionNeck == "2" && optionQuality == "2")
+	{
+		id = 10;
+	}
+	else if (optionSleeve == "2" && optionNeck == "1" && optionQuality == "1")
+	{
+		id = 7;
+	}
+	else if (optionSleeve == "2" && optionNeck == "1" && optionQuality == "2")
+	{
+		id = 11;
+	}
+	else if (optionSleeve == "2" && optionNeck == "2" && optionQuality == "1")
+	{
+		id = 8;
+	}
+	else if (optionSleeve == "2" && optionNeck == "2" && optionQuality == "2")
+	{
+		id = 12;
+	}
+
+	return id;
 }

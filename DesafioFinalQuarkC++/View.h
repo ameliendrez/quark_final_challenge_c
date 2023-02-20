@@ -16,11 +16,7 @@ private:
 public:
 	View();
 	~View() override;
-	void selectTypeOfClothes(std::string option, bool& isValidOption);
-	void selectTypeOfSleeve(std::string option, bool& isValidOption);
-	void selectTypeOfNeck(std::string option, bool& isValidOption, std::string &optionQuality);
-	void selectTypeOfPants(std::string option, bool& isValidOption, std::string optionQuality);
-	void selectTypeOfQuality(std::string option, bool& isValidOption);
+	bool checkValidOption(std::string option);
 	void backToMenu(std::string option, bool& isValidOption);
 	void showTitleQuote();
 	void showTextSeparator();
@@ -33,15 +29,17 @@ public:
 	void showTextInLine(int text) override;
 	void showBackToMenuMessage() override;
 	void showQuotesHistory();
-	void showMenuCreateQuote();
+	void showMenuInitQuote();
 	void showMenuTakeSleeve();
-	void showMenuTakeNeck(std::string optionSleeve);
+	void showMenuTakeNeck();
 	void showMenuTakeTypePants();
-	void showMenuTakeQuality(std::string optionQuality);
+	void showMenuTakeQuality();
 	float showMenuPrice();
 	int showMenuStock(int currentStock);
-	void showMenuCreateQuoteShirt(std::string optionSleeve, const char* optionNeck, std::string optionQuality);
-	void showMenuCreateQuotePant(const char* optionType, const char* optionQuality);
+	void showMenuOutOfStock(int currentStock, int quantitySelected);
+	void showMenuCreateQuoteShirt();
+	void showMenuCreateQuotePant();
+	void showMenuPriceAndStock();
 	void finishQuote();
 };
 #endif //VIEW_H

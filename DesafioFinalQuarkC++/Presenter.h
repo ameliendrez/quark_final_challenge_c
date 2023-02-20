@@ -11,6 +11,10 @@ class Presenter
 private:
 	IView* mView = nullptr;
 	SalesChannel* salesChannel = nullptr;
+	std::string lastSelectedSleeve = "";
+	std::string lastSelectedNeck = "";
+	std::string lastSelectedPantsType = "";
+	std::string lastSelectedQuality = "";
 public:
 	explicit Presenter(IView* view);
 	~Presenter();
@@ -19,16 +23,21 @@ public:
 	void getSalesChannelSellerName();
 	void getSalesChannelSellerId();
 	void getSalesChannelQuoteHistory();
-	int getShirtId(std::string optionSleeve, const char* optionNeck, std::string optionQuality);
-	int getPantId(const char* optionType, const char* optionQuality);
-	void createQuoteShirt(std::string optionSleeve, const char* optionNeck, std::string optionQuality);
-	void createQuotePant(const char* optionType, const char* optionQuality);
+	void createQuoteShirt();
+	void createQuotePant();
 	void setPriceToQuote(float price);
 	void setStockToQuote(int stock);
 	int getCurrentStock();
 	void showQuoteIntormation(Quote* quote);
 	void finishQuote();
-	void setCurrentQuality(std::string currentQualityId);
-	std::string getCurrentCuality();
+	std::string getLastSelectedSleeve();
+	std::string getLastSelectedNeck();
+	std::string getLastSelectedPantsType();
+	std::string getLastSelectedQuality();
+	void setLastSelectedSleeve(std::string selectedSleeve);
+	void setLastSelectedNeck(std::string selectedNeck);
+	void setLastSelectedPantsType(std::string selectedPantsType);
+	void setLastSelectedQuality(std::string selectedQuality);
+	void clearQuoteCreation();
 };
 #endif //PRESENTER_H

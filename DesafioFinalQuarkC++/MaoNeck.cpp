@@ -1,6 +1,6 @@
 #include "MaoNeck.h"
 MaoNeck::MaoNeck()
 {
-	this->rate = 0.3f;
+	this->rate = 0.03f;
 	this->name = "Mao";
 }

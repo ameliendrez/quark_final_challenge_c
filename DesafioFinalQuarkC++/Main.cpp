@@ -3,6 +3,7 @@
 int main()
 {
     View menu;
+	
     return 0;
 }
 
