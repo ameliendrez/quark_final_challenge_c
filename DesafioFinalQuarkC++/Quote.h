@@ -13,13 +13,12 @@ public:
 	std::string getDateTime();
 	int getSellerId();
 	std::string getItemDescription();
-	float getItemPrice();
 	int getQuantity();
 	float getGrandTotal();
-	void setQuantity(int quantity);
 	float getPrice();
-	void setPrice(float price);
 	int getItemStock();
+	void setPrice(float price);
+	void setQuantity(int quantity);
 private:
 	int id;
 	float price;

@@ -41,7 +41,7 @@ void Presenter::getSalesChannelQuoteHistory()
 	{
 		for (auto const& quote : quotes)
 		{
-			this->showQuoteIntormation(quote);
+			this->mView->showQuoteInformation(quote);
 		}
 	}
 	else
@@ -50,34 +50,10 @@ void Presenter::getSalesChannelQuoteHistory()
 	}
 }
 
-void Presenter::showQuoteIntormation(Quote* quote)
-{
-	this->mView->showTextInLine("Numero de identificacion: ");
-	this->mView->showText(quote->getId());
-
-	this->mView->showTextInLine("Fecha y hora de la cotizacion: ");
-	this->mView->showText(quote->getDateTime());
-
-	this->mView->showTextInLine("Codigo del vendedor: ");
-	this->mView->showText(quote->getSellerId());
-
-	this->mView->showTextInLine("Prenda Cotizada: ");
-	this->mView->showText(quote->getItemDescription());
-
-	this->mView->showTextInLine("Precio unitario: $$");
-	this->mView->showText(quote->getItemPrice());
-
-	this->mView->showTextInLine("Cantidad de unidades cotizadas: ");
-	this->mView->showText(quote->getQuantity());
-
-	this->mView->showTextInLine("Precio final: $$");
-	this->mView->showText(quote->getGrandTotal());
-}
-
 void Presenter::finishQuote()
 {
 	Quote* quote = this->salesChannel->saveLastQuote();
-	this->showQuoteIntormation(quote);
+	this->mView->showQuoteInformation(quote);
 }
 
 void Presenter::clearQuoteCreation()

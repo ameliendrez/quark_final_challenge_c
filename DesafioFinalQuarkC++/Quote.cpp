@@ -36,11 +36,6 @@ std::string Quote::getItemDescription()
 	return this->item->getName();
 }
 
-float Quote::getItemPrice()
-{
-	return this->price;
-}
-
 int Quote::getQuantity()
 {
 	return this->quantity;

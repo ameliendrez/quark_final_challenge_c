@@ -28,7 +28,6 @@ public:
 	void setPriceToQuote(float price);
 	void setStockToQuote(int stock);
 	int getCurrentStock();
-	void showQuoteIntormation(Quote* quote);
 	void finishQuote();
 	std::string getLastSelectedSleeve();
 	std::string getLastSelectedNeck();

@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "View.h"
 #include "Presenter.h"
+#include "Quote.h"
 #include <algorithm>
 #include <vector>
 
@@ -138,6 +139,32 @@ void View::showMenuPriceAndStock()
 	}
 }
 
+void View::showQuoteInformation(Quote* quote)
+{
+	showTextInLine("Numero de identificacion: ");
+	showText(quote->getId());
+
+	showTextInLine("Fecha y hora de la cotizacion: ");
+	showText(quote->getDateTime());
+
+	showTextInLine("Codigo del vendedor: ");
+	showText(quote->getSellerId());
+
+	showTextInLine("Prenda Cotizada: ");
+	showText(quote->getItemDescription());
+
+	showTextInLine("Precio unitario: $");
+	showText(quote->getPrice());
+
+	showTextInLine("Cantidad de unidades cotizadas: ");
+	showText(quote->getQuantity());
+
+	showTextInLine("Precio final: $");
+	showText(quote->getGrandTotal());
+
+	showText("");
+}
+
 void View::showMenuOutOfStock(int currentStock, int quantitySelected)
 {
 	showTitleQuote();
@@ -163,7 +190,6 @@ void View::showMenuOutOfStock(int currentStock, int quantitySelected)
 
 	showMainMenu();
 }
-
 
 void View::showMenuCreateQuoteShirt()
 {
